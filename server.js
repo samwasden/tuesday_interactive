@@ -7,4 +7,6 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
-app.listen(4000, () => console.log('fucking bitches on port 4000'))
+const port = process.env.PORT || 4000
+
+app.listen(port, () => console.log('kicking ass and taking names on port 4000'))
