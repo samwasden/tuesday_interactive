@@ -8,8 +8,11 @@ let rollbar = new Rollbar({
     captureUnhandledRejections: true
 })
 
+
 const students = []
 const app = express();
+
+app.use(express.json())
 
 app.use(rollbar, errorHandler())
 
@@ -25,7 +28,7 @@ app.post('/api/student', (req,res) => {
 
     students.push(name)
 
-    rollbar.log('student added successfully', {author: 'Sam', name})
+    rollbar.log('student added successfully', {author: 'Sam'})
     res.status(200).send(students)
 })
 
