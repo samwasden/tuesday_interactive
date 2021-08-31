@@ -11,6 +11,9 @@ let rollbar = new Rollbar({
 const students = []
 const app = express();
 
+app.use(rollbar, errorHandler())
+
+
 app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
     rollbar.info('html file served successfully!')
@@ -25,6 +28,7 @@ app.post('/api/student', (req,res) => {
     rollbar.log('student added successfully', {author: 'Sam', name})
     res.status(200).send(students)
 })
+
 
 // app.use('/css', express.static(path.join(__dirname, '/public/style.css')))
 
